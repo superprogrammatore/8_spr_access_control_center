@@ -31,9 +31,9 @@ const RoleSelector: React.FC = () => {
   ];
 
   return (
-    <div className="glass-card rounded-xl p-6 animate-slide-in">
+    <div className="glass-card rounded-xl p-6 hover-glow transition-all duration-500">
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-primary/20">
+        <div className="p-2 rounded-lg bg-primary/20 animate-float">
           <LogIn className="w-5 h-5 text-primary" />
         </div>
         <div>
@@ -45,7 +45,7 @@ const RoleSelector: React.FC = () => {
       </div>
 
       <div className="grid gap-3">
-        {roles.map(({ role, label, icon, description }) => {
+        {roles.map(({ role, label, icon, description }, index) => {
           const isSelected = user?.role === role;
           const isAdminRole = role === 'admin';
 
@@ -55,18 +55,20 @@ const RoleSelector: React.FC = () => {
               onClick={() => login(role)}
               className={cn(
                 'p-4 rounded-lg border text-left transition-all duration-300',
-                'hover:scale-[1.02] active:scale-[0.98]',
+                'hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg',
                 isSelected
                   ? isAdminRole
-                    ? 'bg-admin/20 border-admin/50 glow-admin'
-                    : 'bg-user/20 border-user/50 glow-user'
+                    ? 'bg-admin/20 border-admin/50 glow-admin animate-pulse-glow'
+                    : 'bg-user/20 border-user/50 glow-user animate-pulse-glow'
                   : 'bg-secondary/50 border-border hover:bg-secondary'
               )}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center gap-3">
                 <div
                   className={cn(
-                    'p-2 rounded-lg',
+                    'p-2 rounded-lg transition-transform duration-300',
+                    isSelected && 'scale-110',
                     isSelected
                       ? isAdminRole
                         ? 'bg-admin/30 text-admin'

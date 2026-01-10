@@ -61,12 +61,13 @@ const RoleBadge: React.FC<RoleBadgeProps> = ({
   return (
     <div
       className={cn(
-        'inline-flex items-center rounded-full border font-medium transition-all',
+        'inline-flex items-center rounded-full border font-medium transition-all duration-300 hover:scale-105',
         sizeClasses[size],
-        config.className
+        config.className,
+        role && 'animate-fade-in'
       )}
     >
-      <Icon className={cn(iconSizes[size], config.iconClassName)} />
+      <Icon className={cn(iconSizes[size], config.iconClassName, "transition-transform duration-300")} />
       {showLabel && <span>{config.label}</span>}
     </div>
   );

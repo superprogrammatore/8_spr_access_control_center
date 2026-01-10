@@ -44,10 +44,10 @@ const AccessCard: React.FC<AccessCardProps> = ({
   return (
     <div
       className={cn(
-        'glass-card rounded-xl p-6 transition-all duration-300',
+        'glass-card rounded-xl p-6 transition-all duration-500 animate-fade-in',
         hasAccess
-          ? 'border-success/30 hover:border-success/50'
-          : 'border-destructive/30 opacity-60'
+          ? 'border-success/30 hover:border-success/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-success/10'
+          : 'border-destructive/30 opacity-60 hover:opacity-80'
       )}
     >
       {/* Header */}

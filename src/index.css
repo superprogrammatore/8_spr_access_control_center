@@ -125,33 +125,39 @@
   .gradient-user {
     background: var(--gradient-user);
   }
-}
 
-/* Animazioni */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
+  /* Hover Effects */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
   }
-  50% {
-    opacity: 0.7;
-  }
-}
 
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .hover-glow {
+    @apply transition-all duration-300;
   }
-}
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsla(217, 91%, 60%, 0.3);
+  }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
+  /* Staggered animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
 
-.animate-slide-in {
-  animation: slide-in 0.3s ease-out;
+  /* Shimmer effect for loading states */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--secondary)) 25%,
+      hsl(var(--muted)) 50%,
+      hsl(var(--secondary)) 75%
+    );
+    background-size: 200% 100%;
+  }
 }
