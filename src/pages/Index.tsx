@@ -26,36 +26,37 @@ const Index: React.FC = () => {
         {/* Animated circles */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-spin-slow" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-12">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6 animate-slide-in">
-              <Shield className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6 animate-fade-in opacity-0 stagger-1" style={{ animationFillMode: 'forwards' }}>
+              <Shield className="w-4 h-4 animate-float" />
               App Educativa
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-in">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-up opacity-0 stagger-2" style={{ animationFillMode: 'forwards' }}>
               <span className="gradient-text">Access Control</span>
               <br />
               <span className="text-foreground">Center</span>
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-in">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in opacity-0 stagger-3" style={{ animationFillMode: 'forwards' }}>
               Impara come funzionano i <strong>ruoli</strong> e i <strong>permessi</strong> nelle 
               applicazioni web moderne. Sperimenta con diversi livelli di accesso.
             </p>
 
             {isAuthenticated && (
-              <div className="flex flex-wrap justify-center gap-4 animate-slide-in">
-                <Button asChild size="lg" className="group">
+              <div className="flex flex-wrap justify-center gap-4 animate-fade-in opacity-0 stagger-4" style={{ animationFillMode: 'forwards' }}>
+                <Button asChild size="lg" className="group hover-lift hover-glow">
                   <Link to="/dashboard">
                     Vai alla Dashboard
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
                   </Link>
                 </Button>
                 {isAdmin && (
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="lg" className="hover-lift">
                     <Link to="/admin">
                       Pannello Admin
                     </Link>
@@ -66,7 +67,7 @@ const Index: React.FC = () => {
           </div>
 
           {/* Role Selector */}
-          <div className="max-w-md mx-auto">
+          <div className="max-w-md mx-auto animate-scale-in opacity-0 stagger-5" style={{ animationFillMode: 'forwards' }}>
             <RoleSelector />
           </div>
         </div>
@@ -75,33 +76,39 @@ const Index: React.FC = () => {
       {/* Educational Section */}
       <section className="py-16 bg-card/50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8">
+          <h2 className="text-2xl font-bold text-center mb-8 animate-fade-in">
             Cosa Imparerai
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <EducationalNote type="learn" title="Autenticazione vs Autorizzazione">
-              <p>
-                <strong>Autenticazione</strong>: Chi sei? (login)
-              </p>
-              <p>
-                <strong>Autorizzazione</strong>: Cosa puoi fare? (permessi)
-              </p>
-            </EducationalNote>
+            <div className="hover-lift transition-all duration-300">
+              <EducationalNote type="learn" title="Autenticazione vs Autorizzazione">
+                <p>
+                  <strong>Autenticazione</strong>: Chi sei? (login)
+                </p>
+                <p>
+                  <strong>Autorizzazione</strong>: Cosa puoi fare? (permessi)
+                </p>
+              </EducationalNote>
+            </div>
 
-            <EducationalNote type="info" title="Ruoli e Permessi">
-              <p>
-                I ruoli (admin, user) raggruppano permessi. Un utente con ruolo "admin" 
-                ha accesso a funzionalità riservate.
-              </p>
-            </EducationalNote>
+            <div className="hover-lift transition-all duration-300">
+              <EducationalNote type="info" title="Ruoli e Permessi">
+                <p>
+                  I ruoli (admin, user) raggruppano permessi. Un utente con ruolo "admin" 
+                  ha accesso a funzionalità riservate.
+                </p>
+              </EducationalNote>
+            </div>
 
-            <EducationalNote type="warning" title="Sicurezza Lato Server">
-              <p>
-                I controlli frontend sono solo per UX. La vera sicurezza 
-                è sempre implementata sul <strong>server</strong>.
-              </p>
-            </EducationalNote>
+            <div className="hover-lift transition-all duration-300">
+              <EducationalNote type="warning" title="Sicurezza Lato Server">
+                <p>
+                  I controlli frontend sono solo per UX. La vera sicurezza 
+                  è sempre implementata sul <strong>server</strong>.
+                </p>
+              </EducationalNote>
+            </div>
           </div>
         </div>
       </section>

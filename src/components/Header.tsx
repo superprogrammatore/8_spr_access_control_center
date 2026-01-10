@@ -67,13 +67,14 @@ const Header: React.FC = () => {
                   key={link.to}
                   to={link.to}
                   className={cn(
-                    'flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all',
+                    'flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300',
+                    'hover:scale-105 active:scale-95',
                     isActive
-                      ? 'bg-primary/20 text-primary'
+                      ? 'bg-primary/20 text-primary shadow-md shadow-primary/20'
                       : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                   )}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className={cn("w-4 h-4 transition-transform duration-300", isActive && "animate-float")} />
                   <span className="hidden md:block">{link.label}</span>
                 </Link>
               );
